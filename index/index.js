@@ -1,3 +1,6 @@
+if (localStorage.getItem("token") == null) {
+    location.href = '/login.html';
+}
 // ----------------------------------------------------请求个人信息
 $.ajax({
     url: "http://ajax.frontend.itheima.net/my/userinfo",
@@ -35,6 +38,32 @@ $.ajax({
             }
   
         }
+    },
+    // 请求失败后调用
+    fail: function () { },
+    // complete函数，在ajax请求完成（无论成功还是失败）之后触发
+    complete: function (xhr) {
+        if (xhr.responseJSON.status == 1 || xhr.responseJSON.message == "身份认证失败！") {
+            // 删除 过期 token
+            localStorage.removeItem("token");
+            location.href = '/login.html'
+        }
     }
+    
+
+})
+
+// -------------------------------------------------------退出
+$("#logout").on("click", function () {
+    layer.confirm('您确定要退出吗?', {
+        icon: 3,
+        title: '退出窗口'
+    }, function (index) {
+        //do something
+        localStorage.removeItem("token");
+        location.href = '/login.html'
+        // 用户关闭窗口 index: number值
+        layer.close(index);
+    });
 })
   

@@ -52,13 +52,13 @@ $("#register form").on("submit", function (e) {
                 // 清空注册的表单(reset是dom方法，所以把jQuery对象转成DOM对象)
                 $('#register form')[0].reset();
             }
-            console.log(res);
+            // console.log(res);
         }
     })
 })
 
 
-// --------------------------------------------------------注册
+// --------------------------------------------------------登录
 $("#login form").on("submit", function (e) {
     e.preventDefault();
 
