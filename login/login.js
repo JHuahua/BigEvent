@@ -30,11 +30,11 @@ form.verify({
         }
     }
 });
-// ------------------------------------------------表单验证
 
+
+// ------------------------------------------------表单验证
 $("#register form").on("submit", function (e) {
     e.preventDefault();
-
 
     var val = $(this).serialize();
 
@@ -75,7 +75,7 @@ $("#login form").on("submit", function (e) {
                 // 把token保存到本地存储
                 localStorage.setItem('token', res.token);
                 // 跳转到index.html
-                location.href = '/index.html';
+                location.href = '../index.html';
             }
         }
     })
