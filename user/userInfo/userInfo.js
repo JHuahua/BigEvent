@@ -47,5 +47,5 @@ $('button:contains("重置")').click(function (e) {
     
     //  为表单重新赋值，请求原来的数据
     //  把获取用户数据重新获取；
-    get_info(); 
+    getInfo(); 
 });
