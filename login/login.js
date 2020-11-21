@@ -40,7 +40,7 @@ $("#register form").on("submit", function (e) {
 
     $.ajax({
         type: 'post',
-        url: 'http://ajax.frontend.itheima.net/api/reguser',
+        url: '/api/reguser',
         data: val,
         success: function (res) {
             layer.msg(res.message);
@@ -66,7 +66,7 @@ $("#login form").on("submit", function (e) {
 
     $.ajax({
         type: 'post',
-        url: 'http://ajax.frontend.itheima.net/api/login',
+        url: '/api/login',
         data: data,
         success: function (res) {
             // 无论登录成功，还是失败，都给提示

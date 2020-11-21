@@ -3,13 +3,10 @@ if (localStorage.getItem("token") == null) {
 }
 // ----------------------------------------------------请求个人信息
 $.ajax({
-    url: "http://ajax.frontend.itheima.net/my/userinfo",
+    url: "/my/userinfo",
     // 设置请求头：
-    headers: {
-        "Authorization": localStorage.getItem("token"),
-    },
     success: function(res) {
-        console.log(res);
+        // console.log(res);
         if (res.status == 0) {
             // 名称：有昵称就昵称、不然就是用户名；
             var name = res.data.nickname || res.data.username;
@@ -41,16 +38,7 @@ $.ajax({
     },
     // 请求失败后调用
     fail: function () { },
-    // complete函数，在ajax请求完成（无论成功还是失败）之后触发
-    complete: function (xhr) {
-        if (xhr.responseJSON.status == 1 || xhr.responseJSON.message == "身份认证失败！") {
-            // 删除 过期 token
-            localStorage.removeItem("token");
-            location.href = '/login.html'
-        }
-    }
     
-
 })
 
 // -------------------------------------------------------退出
