@@ -57,9 +57,12 @@ function getList() {
         url: '/my/article/' + id,
         success: function (res) {
             // console.log(res);
-            form.val("edit", res.data)
+            form.val("edit", res.data);
+
+            // 图片需要单独设置
+            $('#image').cropper("replace", 'http://ajax.frontend.itheima.net' + res.data.cover_img);
         }
-    })
+    })  
 }
 
 
@@ -89,14 +92,14 @@ $("form").on("submit", function (e) {
         // 
         // 完成添加
         $.ajax({
-          type: 'POST',
-          url: '/my/article/edit',
-          // fd:对象;
-          data: fd,
-          // 提交formdata数据，必须加下面两个选项
-          processData: false,
-          contentType: false,
-          success: function(res) {
+        type: 'POST',
+        url: '/my/article/edit',
+        // fd:对象;
+        data: fd,
+        // 提交formdata数据，必须加下面两个选项
+        processData: false,
+        contentType: false,
+        success: function(res) {
             layer.msg(res.message);
             // 设计：
             if (res.status == 0) {
@@ -106,7 +109,7 @@ $("form").on("submit", function (e) {
                 // 关闭层
                 layer.close(index)
             }
-          }
+        }
         });
     }); 
 })
